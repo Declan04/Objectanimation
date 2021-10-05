@@ -17,6 +17,13 @@ DISPLAYWIDTH = 700
 DISPLAYHEIGHT = 500
 pygame.init()
 
+class beach():
+
+    def __init__(self,x,y,width,height,color1,color2,screen):
+        self.x = x
+        self.y = y
+        self.width = width
+        self.height = height
 
 
 

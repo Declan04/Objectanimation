@@ -10,7 +10,7 @@ GREEN = (12, 148, 37)
 BLUE = (2, 0, 94)
 BLACK = (0, 0, 0)
 PURPLE = (28, 4, 54)
-SAND_YELLOW = (76, 70, 50)
+SAND_YELLOW = (255, 255, 102)
 
 # width by height
 FPS = 60
@@ -46,6 +46,15 @@ class Cloud():
     def draw_Cloud(self):
         pygame.draw.circle(self.screen, self.cloud_color1, [self.cloud_x, self.cloud_y], self.cloud_radius)
 
+    def move_cloud(self):
+        self.cloud_x += 5
+        if self.cloud_x > DISPLAYHEIGHT:
+            self.cloud_x = -2*self.cloud_radius
+
+
+
+
+
 
 beach = Beach(0, 300, 900, 600, SAND_YELLOW, screen)
 
@@ -54,6 +63,12 @@ beach = Beach(0, 300, 900, 600, SAND_YELLOW, screen)
 clouds = [Cloud(screen, WHITE,
                 random.randint(0, DISPLAYWIDTH), random.randint(0, int(DISPLAYHEIGHT*.25)),60)
           for x in range(25)]
+
+
+
+
+
+
 
 pygame.display.set_caption("my Pygame animation")
 
@@ -72,6 +87,7 @@ while running:
 
     for cloud in clouds:
         cloud.draw_Cloud()
+        cloud.move_cloud()
 
     pygame.display.flip()
 

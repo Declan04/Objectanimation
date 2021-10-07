@@ -1,6 +1,7 @@
 import pygame
-import random           #in terminal pip install pygame
-#create color constants
+import random  # in terminal pip install pygame
+
+# create color constants
 
 
 WHITE = (255, 255, 255)
@@ -11,16 +12,17 @@ BLACK = (0, 0, 0)
 PURPLE = (28, 4, 54)
 SAND_YELLOW = (76, 70, 50)
 
-#width by height
+# width by height
 FPS = 60
 DISPLAYWIDTH = 700
 DISPLAYHEIGHT = 500
 pygame.init()
 screen = pygame.display.set_mode((DISPLAYWIDTH, DISPLAYHEIGHT))
 
+
 class Beach():
 
-    def __init__(self,x,y,width,height,color1,screen):
+    def __init__(self, x, y, width, height, color1, screen):
         self.x = x
         self.y = y
         self.width = width
@@ -29,22 +31,35 @@ class Beach():
         self.screen = screen
 
     def draw_beach(self):
-        pygame.draw.rect(self.screen,self.color1,[self.x,self.y,self.width,self.height])
+        pygame.draw.rect(self.screen, self.color1, [self.x, self.y, self.width, self.height])
+
+
+class Cloud():
+
+    def __init__(self, screen, cloud_color1, cloud_x, cloud_y, cloud_radius):
+        self.cloud_x = cloud_x
+        self.cloud_y = cloud_y
+        self.cloud_color1 = cloud_color1
+        self.cloud_radius = cloud_radius
+        self.screen = screen
+
+    def draw_Cloud(self):
+        pygame.draw.circle(self.screen, self.cloud_color1, [self.cloud_x, self.cloud_y], self.cloud_radius)
+
+
+beach = Beach(0, 300, 900, 600, SAND_YELLOW, screen)
 
 
 
-
-
-
-beach = Beach(0,300,900,600,SAND_YELLOW,screen)
+clouds = [Cloud(screen, WHITE,
+                random.randint(0, DISPLAYWIDTH), random.randint(0, int(DISPLAYHEIGHT*.25)),60)
+          for x in range(25)]
 
 pygame.display.set_caption("my Pygame animation")
 
 clock = pygame.time.Clock()
 
 running = True
-
-
 
 while running:
     for event in pygame.event.get():
@@ -53,8 +68,10 @@ while running:
             running = False
     screen.fill(BLUE)
 
-
     beach.draw_beach()
+
+    for cloud in clouds:
+        cloud.draw_Cloud()
 
     pygame.display.flip()
 

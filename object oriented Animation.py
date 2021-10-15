@@ -61,10 +61,10 @@ class Umbrella_stand():
         self.umbrella_width = umbrella_width
         self.umbrella_height = umbrella_height
 
-    def draw_ubrella(self):
+    def draw_umbrella(self):
         pygame.draw.rect(self.screen,self.umbrella_color,[self.umbrella_x,self.umbrella_y,self.umbrella_width,self.umbrella_height])
 
-
+#both of these are suppose to be beach towels did not have time for umbrella.
 
 class Umbrella_top1():
     def __init__(self, screen,umbrella_color1,umbrella1_x,umbrella1_y,umbrella1_width,umbrella1_height):
@@ -115,7 +115,7 @@ while running:
         cloud.draw_Cloud()
         cloud.move_cloud()
 
-    umbrella.draw_ubrella()
+    umbrella.draw_umbrella()
     umbrealla_top1.draw_umbrella1()
     pygame.display.flip()
 

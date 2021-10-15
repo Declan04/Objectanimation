@@ -66,6 +66,17 @@ class Umbrella_stand():
 
 
 
+class Umbrella_top1():
+    def __init__(self, screen,umbrella_color1,umbrella1_x,umbrella1_y,umbrella1_width,umbrella1_height):
+        self.screen = screen
+        self.umbrella_color1 = umbrella_color1
+        self.umbrella1_x = umbrella1_x
+        self.umbrella1_y = umbrella1_y
+        self.umbrella1_width = umbrella1_width
+        self.umbrella1_height = umbrella1_height
+
+    def draw_umbrella1(self):
+        pygame.draw.rect(self.screen,self.umbrella_color1,[self.umbrella1_x,self.umbrella1_y,self.umbrella1_width,self.umbrella1_height])
 
 
 
@@ -80,7 +91,8 @@ clouds = [Cloud(screen, WHITE,
 
 
 
-umbrella = Umbrella_stand(screen,BLACK,200,350,350,50)
+umbrella = Umbrella_stand(screen,BLACK,350,350,200,50)
+umbrealla_top1 = Umbrella_top1(screen,RED,20,350,200,50)
 
 
 
@@ -104,6 +116,7 @@ while running:
         cloud.move_cloud()
 
     umbrella.draw_ubrella()
+    umbrealla_top1.draw_umbrella1()
     pygame.display.flip()
 
     clock.tick(FPS)

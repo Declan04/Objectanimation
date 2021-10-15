@@ -48,8 +48,22 @@ class Cloud():
 
     def move_cloud(self):
         self.cloud_x += 5
-        if self.cloud_x > DISPLAYHEIGHT:
-            self.cloud_x = -2*self.cloud_radius
+        if self.cloud_x-3.5*self.cloud_radius > DISPLAYHEIGHT:
+            self.cloud_x = -3.5*self.cloud_radius
+
+
+class Umbrella_stand():
+    def __init__(self, screen, umbrella_color, umbrella_x,umbrella_y,umbrella_width,umbrella_height):
+        self.screen = screen
+        self.umbrella_color = umbrella_color
+        self.umbrella_x = umbrella_x
+        self.umbrella_y = umbrella_y
+        self.umbrella_width = umbrella_width
+        self.umbrella_height = umbrella_height
+
+    def draw_ubrella(self):
+        pygame.draw.rect(self.screen,self.umbrella_color,[self.umbrella_x,self.umbrella_y,self.umbrella_width,self.umbrella_height])
+
 
 
 
@@ -66,7 +80,7 @@ clouds = [Cloud(screen, WHITE,
 
 
 
-
+umbrella = Umbrella_stand(screen,BLACK,200,350,350,50)
 
 
 
@@ -89,6 +103,7 @@ while running:
         cloud.draw_Cloud()
         cloud.move_cloud()
 
+    umbrella.draw_ubrella()
     pygame.display.flip()
 
     clock.tick(FPS)
